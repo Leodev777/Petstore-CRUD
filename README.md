@@ -5,7 +5,9 @@ Este proyecto está orientado a validar de manera estructurada y manual el compo
 > ⚠️ Esta colección NO está automatizada mediante scripts o integraciones CI/CD. Está diseñada para ser ejecutada y validada manualmente dentro del entorno Postman.
 
 ---
-
+## 🧩 Web: [URL](https://orange-decade-34a.notion.site/API-Testing-con-Postman-Flujo-Completo-CRUD-Petstore-1f1cee9e4b0780518a23d87bc70d891d)
+## 🧩 Video: [Drive](https://drive.google.com/file/d/1zzCh6Z3zzLPdSmBCTK30CSbFQTLKQLsB/view?usp=sharing)
+---
 ## 🚀 Objetivos del Proyecto
 
 - Comprender el flujo completo de pruebas en una API REST.
