@@ -1,0 +1,416 @@
+{
+	"info": {
+		"_postman_id": "f7e54844-5097-44db-a4a2-bea31b5a7683",
+		"name": "[2] Flujo Petstore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28412091",
+		"_collection_link": "https://telecom-api.postman.co/workspace/APIs~5c2ee624-bca3-4991-b58d-2b6aa6009d93/collection/28412091-f7e54844-5097-44db-a4a2-bea31b5a7683?action=share&source=collection_link&creator=28412091"
+	},
+	"item": [
+		{
+			"name": "Test Suite #2 Users - Petstore",
+			"item": [
+				{
+					"name": "[1] Crear usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"username\": \"juanperez1\",\r\n  \"firstName\": \"Juan\",\r\n  \"lastName\": \"Perez\",\r\n  \"email\": \"juanperez1@email.com\",\r\n  \"password\": \"password123\",\r\n  \"phone\": \"+54 9 261 555 9256\",\r\n  \"userStatus\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[2] Verificar usuario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"\r",
+									"// Validaciones Assertions - Se valida todo el objeto, menos password\r",
+									"pm.test(\"Validar datos del usuario\", function () {\r",
+									"    pm.expect(response.id).to.eql(1);\r",
+									"    pm.expect(response.username).to.eql(\"juanperez1\");\r",
+									"    pm.expect(response.firstName).to.eql(\"Juan\");\r",
+									"    pm.expect(response.lastName).to.eql(\"Perez\");\r",
+									"    pm.expect(response.email).to.eql(\"juanperez1@email.com\");\r",
+									"    pm.expect(response.phone).to.eql(\"+54 9 261 555 9256\");\r",
+									"    pm.expect(response.userStatus).to.eql(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/juanperez1",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								"juanperez1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[3] Actualizar usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"username\": \"juanperez100\",\r\n  \"firstName\": \"Juan Gabriel\",\r\n  \"lastName\": \"Perez\",\r\n  \"email\": \"juanperez100@email.com\",\r\n  \"password\": \"password123\",\r\n  \"phone\": \"+54 9 261 555 9256\",\r\n  \"userStatus\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/juanperez1",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								"juanperez1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[4] Loguear usuario",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"juanperez100\",\r\n  \"password\": \"password12\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/login",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[5] Desloguear usuario",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/logout",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test Suite #3 Pets - Petstore",
+			"item": [
+				{
+					"name": "[1] Cargar mascota al sistema",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 19959515,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"Dogs\"\r\n  },\r\n  \"name\": \"Nina\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 101,\r\n      \"name\": \"Labrador\"\r\n    },\r\n    {\r\n      \"id\": 102,\r\n      \"name\": \"Friendly\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[2] Cargar imagen de mascota",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 19959515,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"Dogs\"\r\n  },\r\n  \"name\": \"Nina\",\r\n  \"photoUrls\": [\r\n    \"https://i.pinimg.com/736x/ac/50/d1/ac50d1d14bbe26811dc5d15844bb5ec6.jpg\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 101,\r\n      \"name\": \"Labrador\"\r\n    },\r\n    {\r\n      \"id\": 102,\r\n      \"name\": \"Friendly\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[3] Buscar mascota por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 9857,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"Dogs\"\r\n  },\r\n  \"name\": \"Nina\",\r\n  \"photoUrls\": [\r\n    \"https://i.pinimg.com/736x/ac/50/d1/ac50d1d14bbe26811dc5d15844bb5ec6.jpg\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 101,\r\n      \"name\": \"Labrador\"\r\n    },\r\n    {\r\n      \"id\": 102,\r\n      \"name\": \"Friendly\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/:id",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "19959515"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[4] Buscar mascota por Status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"\r",
+									"// Validaciones\r",
+									"pm.test(\"Validar que existe una mascota llamada Nina\", function () {\r",
+									"    // Buscar una mascota cuyo name sea \"Nina\"\r",
+									"    const nina = response.find(pet => pet.name === \"Nina\");\r",
+									"    \r",
+									"    // Validar que exista\r",
+									"    pm.expect(nina).to.not.be.undefined;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/findByStatus?status=available",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "available"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[5] Eliminar mascota",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/{{petid}}",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"{{petid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
